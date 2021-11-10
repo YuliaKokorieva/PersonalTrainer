@@ -7,7 +7,7 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
 export default function Customerlist() {
   const [customers, setCustomers] = useState([]);
-
+  const [gridApi, setGridApi] = useState(null);
   const gridRef = useRef();
 
   useEffect(()=> fetchData(), []);
