@@ -5,7 +5,6 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import DeleteButtonRenderer from './DeleteButtonRenderer';
 import EditButtonRenderer from './EditButtonRenderer';
 import Stack from '@mui/material/Stack';
-import { format } from 'date-fns';
 
 export default function Traininglist(props) {
   const [trainings, setTrainings] = useState([]);

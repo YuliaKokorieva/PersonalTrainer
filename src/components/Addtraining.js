@@ -12,7 +12,7 @@ import {DateTimePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
 export default function Addtraining(props) {
   const [open, setOpen] = React.useState(false);
 	const [training, setTraining] = React.useState({
-    activity: '', date: '', duration: '', customer: props.customerLink
+    activity: '', date: '', duration: '', customer: props.link
 	})
 
   const handleClickOpen = () => {
@@ -46,35 +46,23 @@ export default function Addtraining(props) {
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialig-title">
         <DialogTitle id="form-dialog-title">New training</DialogTitle>
         <DialogContent>
-
-        <TextField
-            autoFocus
-            margin="dense"
-            name="activity"
-						value={training.activity}
-            label="activity"
-            fullWidth
-            variant="standard"
-						onChange={e => handleInputChange(e)}
-          />
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <DateTimePicker 
-          selected={training.date} 
-          onChange={dateChanged}
-          // ampm={true}
-          format='dd/MM/yyyy hh/mm'/>
-        </MuiPickersUtilsProvider>
-
-
-					{/* <TextField
-            margin="dense"
-            name="date"
-						value={training.date}
-            label="date"
-            fullWidth
-            variant="standard"
-						onChange={e => handleInputChange(e)}
-          /> */}
+          <TextField
+              autoFocus
+              margin="dense"
+              name="activity"
+              value={training.activity}
+              label="activity"
+              fullWidth
+              variant="standard"
+              onChange={e => handleInputChange(e)}
+            />
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DateTimePicker 
+            selected={training.date} 
+            onChange={dateChanged}
+            // ampm={true}
+            format='dd/MM/yyyy hh/mm'/>
+          </MuiPickersUtilsProvider>
 
 					<TextField
             margin="dense"
