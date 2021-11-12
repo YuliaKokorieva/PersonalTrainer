@@ -9,11 +9,21 @@ import Customerlist from './Customerlist';
 
 
 function TabApp() {
-  const [value, setValue] = useState('home');
+  const [value, setValue] = useState('customers');
+
+  const trainingsURL = 'https://customerrest.herokuapp.com/api/trainings/'
+
   const handleChange=(event, value) => {
       setValue(value);
   }
-  
+  const styles = {
+    tab: {
+        padding: '2px 34px',
+        color: 'white',
+        fontWeight: 'bold',
+    }
+}
+
   return (
     <div className="App">
       <AppBar position="static">
@@ -24,14 +34,14 @@ function TabApp() {
         </Toolbar>
       </AppBar>
 
-        <AppBar position="static">
-          <Tabs value={value} onChange={handleChange}>
-            <Tab value="trainings" label="Trainings"/>
-            <Tab value="customers" label="Customers"/>
-          </Tabs>
-        </AppBar>
+      <AppBar position="static">
+        <Tabs value={value} onChange={handleChange} TabIndicatorProps={{style: {background:'white'}}}>
+          <Tab value="customers" label="Customers" style={styles.tab}/>
+          <Tab value="trainings" label="Trainings" style={styles.tab}/>          
+        </Tabs>
+      </AppBar>
 
-      {value === 'trainings' && <Traininglist/>}
+      {value === 'trainings' && <Traininglist link={trainingsURL}/>}
       {value === 'customers' && <Customerlist/>}
     </div>
   );
