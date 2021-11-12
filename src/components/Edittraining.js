@@ -6,6 +6,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import DateFnsUtils from '@date-io/date-fns';
+import {DateTimePicker, MuiPickersUtilsProvider} from '@material-ui/pickers';
+
 
 export default function Edittraining(props) {
   const [open, setOpen] = React.useState(false);
@@ -34,6 +37,10 @@ const updateTraining = () => {
   handleClose();
 }  
 
+const dateChanged = (date)=> {
+  setTraining({...training, date: date.toISOString().slice(0,16)})
+}
+
 	return(
     <div>
 			<Button startIcon = {<EditIcon />} size="small" onClick={handleClickOpen}>
@@ -54,15 +61,13 @@ const updateTraining = () => {
 						onChange={e => handleInputChange(e)}
           />
 
-					<TextField
-            margin="dense"
-            name="date"
-						value={training.date}
-            label="date"
-            fullWidth
-            variant="standard"
-						onChange={e => handleInputChange(e)}
-          />
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <DateTimePicker 
+          selected={training.date} 
+          onChange={dateChanged}
+          // ampm={true}
+          format='dd/MM/yyyy HH:mm'/>
+        </MuiPickersUtilsProvider>
 
 					<TextField
             margin="dense"

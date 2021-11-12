@@ -41,7 +41,7 @@ export default function Traininglist(props) {
 
   const columns = [
     {field: 'activity', sortable: true, filter: true},
-    {field: 'date', sortable: true, filter: true},
+    {field: 'date', sortable: true, filter: true, width: 250},
     {field: 'duration', sortable: true, filter: true},
     {field: 'links.0.href', sortable: false, filter: false, 
       cellRenderer: "editButtonRenderer",

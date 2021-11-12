@@ -12,7 +12,6 @@ import CustomerTrainingsButtonRenderer from './CustomerTrainingsButtonRenderer';
 export default function Customerlist() {
   const [customers, setCustomers] = useState([]);
   const [gridApi, setGridApi] = useState(null);
-  const [gridColumnApi, setGridColumnApi] = useState(null);
   const gridRef = useRef();
 
   useEffect(()=> fetchData(), []);
