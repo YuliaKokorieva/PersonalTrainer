@@ -5,6 +5,7 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import DeleteButtonRenderer from './DeleteButtonRenderer';
 import EditButtonRenderer from './EditButtonRenderer';
 import Stack from '@mui/material/Stack';
+import { format } from 'date-fns';
 
 export default function Traininglist(props) {
   const [trainings, setTrainings] = useState([]);
@@ -39,9 +40,12 @@ export default function Traininglist(props) {
     .catch(err=>console.error(err))
   }
 
+  let options = { year: 'numeric', month: 'long', day: 'numeric',  hour: '2-digit', minute:'2-digit', hour12: false };
+
   const columns = [
     {field: 'activity', sortable: true, filter: true},
-    {field: 'date', sortable: true, filter: true, width: 250},
+    {field: 'date', sortable: true, filter: true, width: 250,
+      cellRendererFramework : params => new Date(params.value).toLocaleString([], {options})},
     {field: 'duration', sortable: true, filter: true},
     {field: 'links.0.href', sortable: false, filter: false, 
       cellRenderer: "editButtonRenderer",
