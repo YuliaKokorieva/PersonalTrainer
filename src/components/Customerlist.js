@@ -8,6 +8,7 @@ import Addcustomer from './Addcustomer';
 import Stack from '@mui/material/Stack';
 import Addtraining from './Addtraining';
 import CustomerTrainingsButtonRenderer from './CustomerTrainingsButtonRenderer';
+import Button from '@mui/material/Button';
 
 export default function Customerlist() {
   const [customers, setCustomers] = useState([]);
@@ -107,6 +108,10 @@ export default function Customerlist() {
     setGridApi(params.api);
     // gridApi.sizeColumnsToFit();
   }
+
+  const onBtnExport = () => {
+    gridApi.exportDataAsCsv();
+  };
   
   const defaultColDef = {
     resizable: true,
@@ -124,16 +129,20 @@ export default function Customerlist() {
         justifyContent="left" 
         style={stackStyle}
         >
+       
         <Addcustomer saveCustomer={saveCustomer} />
 
-          <div >
-            <input
-              style={searchStyle}
-              type="search"
-              placeholder="Search"
-              onChange={handleQuickFilter}
-            />
-          </div>
+        <Button style={{margin:8}} size="medium" variant="contained" onClick={() => onBtnExport()}>
+          Download CSV export file
+        </Button>
+        <div >
+          <input
+            style={searchStyle}
+            type="search"
+            placeholder="Search"
+            onChange={handleQuickFilter}
+          />
+        </div>
         
         </Stack>
         <AgGridReact

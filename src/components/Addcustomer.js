@@ -32,7 +32,7 @@ export default function Addcustomer({saveCustomer}) {
 
 	return(
     <div>
-			<Button startIcon = {<AddIcon />}  style={{margin:10}} variant="contained" onClick={handleClickOpen}>
+			<Button startIcon = {<AddIcon />} size="large" style={{margin:8}} variant="contained" onClick={handleClickOpen}>
         Add customer
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialig-title">
