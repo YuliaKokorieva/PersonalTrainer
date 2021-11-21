@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Traininglist from './Traininglist';
 import Customerlist from './Customerlist';
 import EventCalendar from './EventCalendar';
+import Chart from './Chart';
 
 function TabApp() {
   const [value, setValue] = useState('customers');
@@ -38,13 +39,15 @@ function TabApp() {
         <Tabs value={value} onChange={handleChange} TabIndicatorProps={{style: {background:'white'}}}>
           <Tab value="customers" label="Customers" style={styles.tab}/>
           <Tab value="trainings" label="Trainings" style={styles.tab}/>
-          <Tab value="calendar"  label="Calendar" style={styles.tab}/>        
+          <Tab value="calendar"  label="Calendar" style={styles.tab}/>  
+          <Tab value="chart"  label="Statistics" style={styles.tab}/>        
         </Tabs>
       </AppBar>
 
       {value === 'trainings' && <Traininglist link={trainingsURL}/>}
       {value === 'customers' && <Customerlist/>}
       {value === 'calendar' && <EventCalendar link={trainingsURL}/>}
+      {value === 'chart' && <Chart link={trainingsURL}/>}
     </div>
   );
 }
